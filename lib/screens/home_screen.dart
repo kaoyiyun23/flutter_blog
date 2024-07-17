@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart'; //Flutter核心套件
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/common_drawer.dart'; //Flutter核心套件
 
 //Flutter渲染畫面的思維是萬物皆為Widget
 class HomeScreen extends StatelessWidget {
@@ -128,7 +129,7 @@ class HomeScreen extends StatelessWidget {
       ), */
       
       //父Widget與子Widget之間的關係
-      body: Container(
+      /* body: Container(
         alignment: Alignment.topCenter,
         width: 500,
         height: 500,
@@ -147,9 +148,79 @@ class HomeScreen extends StatelessWidget {
             color: Colors.black,
           ),
         ),
+      ), */
+
+      //設置文字按鈕跳轉到第二頁
+      //跳轉分頁要使用Flutter預設物件Navigator
+      //pushNamed方法填入參數context和要跳轉的分頁
+      /* body: TextButton(
+        child: Text("切換到第二頁"),
+        onPressed: () {
+          Navigator.pushNamed(context, "/second");
+        },
+      ), */
+
+      //為了展示Drawer側邊欄，要建置一個AppBar在畫面的頂端，並將其放入Scaffold的appBar參數
+      //進一步調度CommonDrawer的getDrawer函數，生成Drawer，放入Scaffold的drawer參數
+      /* appBar: AppBar(),
+      drawer: CommonDrawer.getDrawer(context),
+      body: TextButton(
+        child: Text("切換到第二頁"),
+        onPressed: () {
+          Navigator.pushNamed(context, "/second");
+        },
+      ), */
+
+      //設定空標題列
+      appBar: AppBar(),
+      //引入先前設定的側邊欄
+      drawer: CommonDrawer.getDrawer(context),
+      //單一滾動檢視，引入更多組件
+      body: SingleChildScrollView(
+        //放入一個Container，留下未來調整的彈性
+        child: Container(
+          //排版置中
+          alignment: Alignment.center,
+          child: Column(
+            //安排需要放進去的組件
+            children: [
+              Container(
+                child: Text(
+                  "雲育鏈Line@ QRCode",
+                  style: TextStyle(fontSize: 28),
+                ),
+              ),
+              //放入圖片，透過AssetImage指定放在assets資料夾的cxcxc_line.png
+              Container(
+                child: Image(image: AssetImage("assets/cxcxc_line.png"),),
+              ),
+              Container(
+                child: Text("掃了不會有好康"),
+              ),
+              //放入一個文字按鈕，設定點擊後的頁面導向
+              Container(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/cloud-architecture-guide");
+                  },
+                  child: Text("單身神功秘笈"),
+                ),
+              ),
+              //放入一個文字按鈕，設定點擊後的頁面導向
+              Container(
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, "/aws-saa-class");
+                  },
+                  child: Text("未來技術趨勢"),
+                ),
+              )
+            ],
+          ),
+        ),
       ),
 
-
+           
     );
   }
 }

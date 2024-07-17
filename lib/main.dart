@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/home_screen.dart';
+//import 'package:flutter_application_1/screens/second_screen.dart';
+import 'package:flutter_application_1/screens/book_screen.dart';
+import 'package:flutter_application_1/screens/aws_saa_class.dart';
 
 class AppEntryPoint extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomeScreen()
+      /* home: HomeScreen() */
+
+      /* routes: {
+        // "路徑名": (BuildContext context) => 頁面物件
+        "/": (BuildContext context) => HomeScreen(),
+        "/second": (BuildContext context) => SecondScreen()
+      },
+      initialRoute: "/", */
+
+      routes: {
+        // "路徑名": (BuildContext context) => 頁面物件
+        "/": (BuildContext context) => HomeScreen(),
+        "/cloud-architecture-guide": (BuildContext context) => BookScreen(),
+        "/aws-saa-class": (BuildContext context) => AwsSaaClassScreen()
+      },
+      initialRoute: "/",
     );
   }
 }
